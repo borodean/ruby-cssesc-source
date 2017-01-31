@@ -28,7 +28,7 @@ task :update do
   execute "download cssesc #{ version }", "wget #{ tarball } -O cssesc.tgz"
   execute "unpacking cssesc #{ version }", 'tar -zxvf cssesc.tgz'
   execute 'cleaning up', 'rm -rf cssesc.tgz'
-  execute 'updating cssesc dependencies', 'mv package vendor && cd vendor && npm install .'
+  execute 'updating cssesc dependencies', 'mv package vendor && cd vendor && npm install --production'
 
   say 'updating VERSION file'
   File.open('VERSION', 'w') { |file| file.write(version) }
